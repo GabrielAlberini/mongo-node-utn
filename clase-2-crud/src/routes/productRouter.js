@@ -5,10 +5,11 @@
 
 import { Router } from "express"
 import { getAllProducts, createProduct, getProductById, updateProduct, deleteProduct } from "../controllers/productController.js";
+import { authValidator } from "../middlewares/authValidator.js"
 
 const productRouter = Router()
 
-productRouter.get("/", getAllProducts)
+productRouter.get("/", authValidator, getAllProducts)
 
 productRouter.post("/", createProduct)
 

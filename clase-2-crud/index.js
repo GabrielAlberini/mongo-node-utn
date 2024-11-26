@@ -1,6 +1,8 @@
 import express from "express"
 import { productRouter } from "./src/routes/productRouter.js"
+import { userRouter } from "./src/routes/userRouter.js"
 import { connectDB } from "./src/config/mongo.js"
+
 process.loadEnvFile()
 
 const PORT = process.env.PORT
@@ -12,6 +14,7 @@ app.use(express.json())
 
 // /api/products
 app.use("/api/products", productRouter)
+app.use("/api/users", userRouter)
 
 app.use("*", (req, res) => {
   res.status(404).json({ error: "resource not found" })
