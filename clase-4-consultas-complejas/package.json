@@ -1,0 +1,20 @@
+{
+  "name": "clase-1-repaso-api-mongo",
+  "version": "1.0.0",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "dev": "node --watch index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "dependencies": {
+    "bcryptjs": "2.4.3",
+    "express": "4.21.1",
+    "jsonwebtoken": "9.0.2",
+    "mongoose": "8.8.0",
+    "zod": "3.23.8"
+  }
+}
