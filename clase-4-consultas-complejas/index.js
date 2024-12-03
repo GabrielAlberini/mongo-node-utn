@@ -2,6 +2,7 @@ import express from "express"
 import { productRouter } from "./src/routes/productRouter.js"
 import { userRouter } from "./src/routes/userRouter.js"
 import { connectDB } from "./src/config/mongo.js"
+import cors from "cors"
 
 process.loadEnvFile()
 
@@ -11,6 +12,7 @@ const URI_DB_MONGO = process.env.URI_DB_MONGO
 const app = express()
 
 app.use(express.json())
+app.use(cors())
 
 // /api/products
 app.use("/api/products", productRouter)
