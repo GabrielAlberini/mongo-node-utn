@@ -9,6 +9,7 @@ const Layout = ({ children }) => {
             {/* a -> recarga la página || Link -> SPA */}
             <Link to="/" className="navbar-item">Home</Link>
             <Link to="/products" className="navbar-item">Products</Link>
+            <Link to="/resume" className="navbar-item">Resume</Link>
           </div>
         </nav>
       </header>

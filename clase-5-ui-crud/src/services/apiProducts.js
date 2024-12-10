@@ -1,5 +1,6 @@
 import axios from "axios"
 
+// "http://localhost:2001/api/products"
 const API_PRODUCTS_BASE_URL = import.meta.env.VITE_API_PRODUCTS_BASE_URL
 
 const getProducts = async () => {
@@ -23,4 +24,16 @@ const deleteProduct = async (id) => {
   return response.data
 }
 
-export { getProducts, createProduct, updateProduct, deleteProduct }
+// http://localhost:2001/api/products?minStock=10&maxStock=30
+const getFilteredProducts = async (filters) => {
+  const query = new URLSearchParams(filters).toString()
+  const response = await axios.get(`${API_PRODUCTS_BASE_URL}/search?${query}`)
+  return response.data
+}
+
+const getStatsProducts = async () => {
+  const response = await axios.get(`${API_PRODUCTS_BASE_URL}/stats`)
+  return response.data
+}
+
+export { getProducts, createProduct, updateProduct, deleteProduct, getFilteredProducts, getStatsProducts }

@@ -1,8 +1,9 @@
 import Layout from "../components/Layout"
 import { useEffect, useState } from "react"
 import ProductCard from "../components/ProductCard"
-import { getProducts, createProduct, updateProduct, deleteProduct } from "../services/apiProducts"
+import { getProducts, createProduct, updateProduct, deleteProduct, getFilteredProducts } from "../services/apiProducts.js"
 import ProductForm from "../components/ProductForm"
+import ProductFilters from "../components/ProductFilters.jsx"
 
 const Products = () => {
   const [products, setProducts] = useState([])
@@ -27,10 +28,25 @@ const Products = () => {
     }
   }
 
+
+
   const handleDelete = async (id) => {
-    if (window.confirm("Are you sure you want to delete the product?"))
-      await deleteProduct(id)
-    fetchProduct()
+    try {
+      if (window.confirm("Are you sure you want to delete the product?"))
+        await deleteProduct(id)
+      fetchProduct()
+    } catch (error) {
+      console.log("Error adding product:", error)
+    }
+  }
+
+  const handleFilter = async (filteredProducts) => {
+    try {
+      const data = await getFilteredProducts(filteredProducts)
+      setProducts(data)
+    } catch (error) {
+      console.log("Error fetching products:", error)
+    }
   }
 
   useEffect(() => {
@@ -42,6 +58,10 @@ const Products = () => {
       <section className="section">
         <div className="container">
           <h1 className="title">Products</h1>
+
+          {/* Formulario para los query params */}
+          <ProductFilters onFilter={handleFilter} />
+
           <button className="button is-primary mb-5" onClick={() => {
             setShowForm(!showForm)
           }}>{showForm ? "Cancel" : "Add product"}</button>
