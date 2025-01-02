@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Voice Todo App</title>
+  <!-- Bulma -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
+  <!-- Boxicons -->
+  <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="./src/css/style.css">
+</head>
+
+<body class="p-5">
+  <div class="cont-app p-5 box">
+    <h1 class="title has-text-centered">Voice Todo App</h1>
+    <h1 class="title has-text-centered is-6">Categoria: URGENTE, MEDIO, TRANQUI</h1>
+    <h4 class="title has-text-centered is-6 tasks-count-text has-text-primary"></h4>
+    <div class="box mt-3 mb-3">
+      <div class="field is-grouped">
+        <!-- Filtro por estado (realizadas o no realizadas) -->
+        <div class="control is-expanded">
+          <div class="select is-fullwidth">
+            <select id="filter-status">
+              <option value="all">Todas</option>
+              <option value="realizadas">Realizadas</option>
+              <option value="no-realizadas">Pendientes</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Filtro por prioridad (urgente, medio, tranqui) -->
+        <div class="control is-expanded">
+          <div class="select is-fullwidth">
+            <select id="filter-priority">
+              <option value="all">Todas</option>
+              <option value="urgente">Urgente</option>
+              <option value="medio">Medio</option>
+              <option value="tranqui">Tranqui</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <button class="button is-link is-fullwidth record-botton">🎙️ Grabar Tarea</button>
+    <ul class="tasks-list">
+    </ul>
+  </div>
+
+  <script src="./src/js/app.js"></script>
+</body>
+
+</html>
